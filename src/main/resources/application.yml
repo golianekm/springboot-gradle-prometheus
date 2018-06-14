@@ -1,0 +1,9 @@
+management:
+  security:
+    enabled: false
+
+endpoints:
+  prometheus:
+    path: metrics
+  metrics:
+    enabled: false
