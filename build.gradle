@@ -29,8 +29,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.codehaus.groovy:groovy')
 	runtime('org.springframework.boot:spring-boot-devtools')
-	compile('io.prometheus:simpleclient_spring_boot:0.4.0')
-    compile('io.prometheus:simpleclient_hotspot:0.4.0')
+	compile 'io.micrometer:micrometer-spring-legacy:1.0.5'
+	compile 'io.micrometer:micrometer-registry-prometheus:1.0.5'
+	//compile('io.prometheus:simpleclient_spring_boot:0.4.0')
+    //compile('io.prometheus:simpleclient_hotspot:0.4.0')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

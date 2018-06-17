@@ -1,9 +1,36 @@
+
+
 management:
+  metrics:
+    use-global-registry: false
+    binders:
+      files:
+        enabled: true
+      processor:
+        enabled: true  
+    distribution:
+      percentiles:
+         'http_server_requests_seconds_sum': 0.95, 0.99
+      percentiles-histogram:
+         'http_server_requests_seconds_sum': true 
+      sla:
+        'http_server_requests_seconds_sum': 10ms, 100ms
+        
+    export:
+      prometheus:
+        enabled: true
+        
   security:
     enabled: false
 
+
+
+
+
 endpoints:
-  prometheus:
-    path: metrics
   metrics:
     enabled: false
+  prometheus:
+    enabled: true
+    id: metrics
+    sensitive: true
