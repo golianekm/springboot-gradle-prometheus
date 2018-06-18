@@ -1,12 +1,8 @@
 package golianekm
 
-import java.util.List
-
-import org.springframework.context.annotation.Bean
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-
-import io.micrometer.core.annotation.Timed
 
 @RestController
 //@Timed("people")
@@ -23,4 +19,18 @@ class Rester {
 		return ['ala','kot']
 	}
 
+	
+	@Value('${HOSTNAME:N/A}')
+	private String hostname;
+
+	@Value('${SPRING_BOOT_PORT:N/A}')
+	private String service;
+
+	@GetMapping("/hostname")
+	//@Timed(value = "people.all", longTask = false)
+	public String hostname() {
+		return "<html><body><h1>Hostname: ${hostname}</h1><h2>Service: ${service}</h2></body></html>"
+	}
+
+	
 }
