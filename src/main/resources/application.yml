@@ -1,4 +1,7 @@
-
+#spring:
+#  session:
+#    store-type: none
+    
 
 management:
   metrics:
