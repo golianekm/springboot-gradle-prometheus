@@ -22,6 +22,7 @@ repositories {
 	mavenCentral()
 }
 
+//http://www.baeldung.com/java-log-json-output
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -33,6 +34,13 @@ dependencies {
 	compile 'io.micrometer:micrometer-registry-prometheus:1.0.5'
 	//compile('io.prometheus:simpleclient_spring_boot:0.4.0')
     //compile('io.prometheus:simpleclient_hotspot:0.4.0')
+    
+    
+    compile('ch.qos.logback:logback-classic')
+    compile('ch.qos.logback.contrib:logback-json-classic:0.1.5')
+    compile('ch.qos.logback.contrib:logback-jackson:0.1.5')
+    compile('com.fasterxml.jackson.core:jackson-databind:2.9.3')
+    compile('com.fasterxml.jackson.core:jackson-annotations:2.9.3')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
