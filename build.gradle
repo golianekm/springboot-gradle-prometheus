@@ -35,6 +35,7 @@ dependencies {
 	//compile('io.prometheus:simpleclient_spring_boot:0.4.0')
     //compile('io.prometheus:simpleclient_hotspot:0.4.0')
     
+    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.1'
     
     compile('ch.qos.logback:logback-classic')
     compile('ch.qos.logback.contrib:logback-json-classic:0.1.5')

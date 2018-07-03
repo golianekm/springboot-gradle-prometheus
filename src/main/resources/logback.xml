@@ -7,9 +7,13 @@
 				class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
 				<prettyPrint>true</prettyPrint>
 			</jsonFormatter>
-			<timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+			<!-- <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat> -->
 		</layout>
 	</appender>
+	
+	 <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+  </appender>
 
 	<logger name="jsonLogger" level="TRACE">
 		<appender-ref ref="json" />
@@ -17,7 +21,7 @@
 
 
 	<root level="INFO">
-		<appender-ref ref="json" />
+		<appender-ref ref="STDOUT" />
 	</root>
 
 </configuration>
