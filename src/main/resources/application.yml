@@ -2,6 +2,10 @@
 #  session:
 #    store-type: none
     
+logging:
+  level:
+    com.uber.jaeger: debug
+
 
 management:
   metrics:
@@ -12,13 +16,12 @@ management:
       processor:
         enabled: true  
     distribution:
-      percentiles:
-         'http_server_requests_seconds_sum': 0.95, 0.99
-      percentiles-histogram:
-         'http_server_requests_seconds_sum': true 
+      #percentiles-histogram:
+      #  "[http.server.requests]": true
       sla:
-        'http_server_requests_seconds_sum': 10ms, 100ms
-        
+        "[http.server.requests]": 10ms, 100ms
+      percentiles:
+        "[http.server.requests]": 0.5, 0.75, 0.95, 0.98, 0.99, 0.999, 1.0        
     export:
       prometheus:
         enabled: true

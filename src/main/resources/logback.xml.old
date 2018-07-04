@@ -15,12 +15,12 @@
     <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
   </appender>
 
-	<logger name="jsonLogger" level="TRACE">
+	<logger name="jsonLogger" level="DEBUG">
 		<appender-ref ref="json" />
 	</logger>
 
 
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</root>
 
