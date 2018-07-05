@@ -5,18 +5,16 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 
-import com.uber.jaeger.Configuration
-import com.uber.jaeger.samplers.ProbabilisticSampler
-
+import io.jaegertracing.Configuration
 import io.micrometer.core.instrument.MeterRegistry
 import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics
 import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics
 import io.micrometer.core.instrument.binder.system.UptimeMetrics
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import io.micrometer.spring.autoconfigure.MeterRegistryCustomizer
 import io.opentracing.Tracer
 import io.opentracing.contrib.metrics.micrometer.MicrometerMetricsReporter
 import io.opentracing.tag.Tags
+
 
 @SpringBootApplication
 class SpringbootPrometheusApplication {
@@ -52,13 +50,15 @@ class SpringbootPrometheusApplication {
 	@Autowired
 	MeterRegistry registry
 	
-	//@Bean
+	@Bean
 	public io.opentracing.Tracer jaegerTracer() {
 		
 		//io.micrometer.core.instrument.Metrics.addRegistry(new SimpleMeterRegistry());
-		Tracer tracer = new Configuration("spring-boot", new Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
-			new Configuration.ReporterConfiguration(true,"192.168.1.200",6831,1000,1 ) )
-			.getTracer();
+		//Tracer tracer = new Configuration("spring-boot", new Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
+		//	new Configuration.ReporterConfiguration(true,"192.168.1.200",6831,1000,1 ) )
+		//	.getTracer();
+			
+		Tracer tracer = Configuration.fromEnv().getTracer();
 		
 		// A reporter can then be created like this:
 		MicrometerMetricsReporter reporter = MicrometerMetricsReporter.newMetricsReporter()

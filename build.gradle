@@ -45,7 +45,9 @@ dependencies {
     compile('com.fasterxml.jackson.core:jackson-annotations:2.9.3')
     
     compile('io.opentracing.contrib:opentracing-spring-web-autoconfigure:0.3.2')
-    compile('com.uber.jaeger:jaeger-core:0.27.0')
+   // compile('com.uber.jaeger:jaeger-core:0.27.0')
+    
+    compile('io.jaegertracing:jaeger-core:0.27.0')
     compile('io.opentracing.brave:brave-opentracing:0.31.2')
 
 //compile group: 'io.opentracing.contrib', name: 'opentracing-metrics', version: '0.3.0'
