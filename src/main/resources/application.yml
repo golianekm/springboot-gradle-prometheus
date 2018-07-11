@@ -5,6 +5,7 @@
 logging:
   level:
     com.uber.jaeger: debug
+    golianekm: debug
 
 
 management:
@@ -29,10 +30,21 @@ management:
   security:
     enabled: false
 
+spring:
+  application:
+    name: spring-boot
 
 
-
-
+opentracing:     
+  jaeger:  
+    enabled: true
+    udp-sender:
+      host: 192.168.1.200
+      port: 6831
+    probabilistic-sampler:
+      sampling-rate: 1.0
+    log-spans: true
+         
 endpoints:
   metrics:
     enabled: false
