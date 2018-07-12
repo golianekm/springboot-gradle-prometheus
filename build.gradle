@@ -31,15 +31,19 @@ dependencies {
 	compile('org.codehaus.groovy:groovy')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	
-	compile 'io.micrometer:micrometer-spring-legacy:1.0.5'
-	compile 'io.micrometer:micrometer-registry-prometheus:1.0.5'
     
     compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.1'
     compile('io.opentracing.contrib:opentracing-spring-jaeger-web-starter:0.1.5')
     
-    compile 'io.opentracing.contrib:opentracing-metrics-micrometer:0.3.0'
+    //compile 'io.opentracing.contrib:opentracing-metrics-micrometer:0.3.0'
     //compile('io.jaegertracing:jaeger-micrometer:0.30.1')
-    compile('io.opentracing.contrib:opentracing-metrics-spring-autoconfigure:0.3.0')
+    //compile('io.opentracing.contrib:opentracing-metrics-spring-autoconfigure:0.3.0')
+    //compile('io.opentracing.contrib:opentracing-metrics-prometheus-spring-autoconfigure:0.3.0')
+
+
+	compile 'io.micrometer:micrometer-spring-legacy:1.0.5'
+	compile 'io.micrometer:micrometer-registry-prometheus:1.0.5'
+
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -12,9 +12,6 @@ import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics
 import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics
 import io.micrometer.core.instrument.binder.system.UptimeMetrics
 import io.micrometer.spring.autoconfigure.MeterRegistryCustomizer
-import io.opentracing.contrib.metrics.MetricsReporter
-import io.opentracing.contrib.metrics.micrometer.MicrometerMetricsReporter
-import io.opentracing.tag.Tags
 
 
 @SpringBootApplication
@@ -33,7 +30,8 @@ class SpringbootPrometheusApplication {
 	@Bean
 	MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
 		return { MeterRegistry registry ->
-			registry.config().commonTags("aplikacja", "spring-boot")
+			//println "MetricsResgistry"
+			//registry.config().commonTags("aplikacja", "spring-boot")
 		}
 	}
 
@@ -51,13 +49,16 @@ class SpringbootPrometheusApplication {
 	UptimeMetrics uptimeMetrics() {
 		return new UptimeMetrics();
 	}
+	
+	
 
 	@Autowired
 	MeterRegistry registry
 
-	@Bean
+/*	@Bean
 	Set<MetricsReporter> metricsReporters(){
 		
+		println registry.dump()
 		MicrometerMetricsReporter reporter = MicrometerMetricsReporter.newMetricsReporter()
 				.withName("tracing")
 				.withConstLabel("span.kind", Tags.SPAN_KIND_CLIENT)
@@ -68,7 +69,7 @@ class SpringbootPrometheusApplication {
 		set.add( reporter )
 		return set
 	}
-
+*/
 	/*
 	 @Autowired
 	 Tracer tracer

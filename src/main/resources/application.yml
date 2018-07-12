@@ -10,22 +10,25 @@ logging:
 
 management:
   metrics:
-    use-global-registry: false
+    use-global-registry: true
     binders:
       files:
         enabled: true
       processor:
-        enabled: true  
+        enabled: true    
+        
     distribution:
       #percentiles-histogram:
       #  "[http.server.requests]": true
       sla:
         "[http.server.requests]": 10ms, 100ms
-      percentiles:
-        "[http.server.requests]": 0.5, 0.75, 0.95, 0.98, 0.99, 0.999, 1.0        
+      #percentiles:
+      #  "[http.server.requests]": 0.5, 0.75, 0.95, 0.98, 0.99, 0.999, 1.0        
     export:
       prometheus:
         enabled: true
+        descriptions: false
+        
         
   security:
     enabled: false
@@ -35,7 +38,9 @@ spring:
     name: spring-boot
 
 
-opentracing:     
+
+opentracing:
+        
   jaeger:  
     enabled: true
     udp-sender:
@@ -46,9 +51,11 @@ opentracing:
     log-spans: true
          
 endpoints:
+  
   metrics:
     enabled: false
   prometheus:
+    
     enabled: true
     id: metrics
     sensitive: true

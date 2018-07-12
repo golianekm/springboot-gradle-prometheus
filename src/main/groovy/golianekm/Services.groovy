@@ -50,6 +50,7 @@ class Services {
 	public String throwError() {
 		log.debug("Wywolano throwError")
 		tracer.activeSpan().setBaggageItem("transaction", "throwError");
+		tracer.activeSpan().setTag("Ala", "kot")
 		throw new RuntimeException("Błąd wywołania usługi")
 	}
 
