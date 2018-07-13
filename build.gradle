@@ -32,7 +32,7 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	
-    compile('net.logstash.logback:logstash-logback-encoder:version:5.1')
+    compile('net.logstash.logback:logstash-logback-encoder:5.1')
   
 	compile('io.opentracing.contrib:opentracing-spring-jaeger-web-starter:0.1.5')
 
