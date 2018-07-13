@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
 
+import static net.logstash.logback.argument.StructuredArguments.*
+import static net.logstash.logback.marker.Markers.*
+
 import groovy.util.logging.Slf4j
 
 @RestController
@@ -21,6 +24,19 @@ class Services {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@RequestMapping(value="/testLog",method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String testLog() {
+		log.info("log message {}", value("name", "value"));
+		log.info("log message {}", keyValue("name", "value"));
+		log.info("log message", keyValue("name", "value"));
+		log.info("log message {} {}", keyValue("name1", "value1"), keyValue("name2", "value2"));
+	    def foo  = [ pole1: "ala", pole2: "kot", pole3: [strus:"pedziwiatr"] ];
+		log.info("log message {}", value("foo", foo));
+		return "OK"
+	}
+	
 
 	@RequestMapping(value="/simpleList",produces=['application/json'],method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)

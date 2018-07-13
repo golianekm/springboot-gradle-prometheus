@@ -12,7 +12,12 @@
 
 	<appender name="JSON"
 		class="ch.qos.logback.core.ConsoleAppender">
-		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSS</timestampPattern>
+			<includeCallerData>false</includeCallerData>
+			<version>2.5</version>
+			<customFields>{"appname":"myWebservice", "roles":["customerorder","auth"], "build_info": { "last_commit":"124234234234234" } } </customFields>
+		</encoder>
 	</appender>
 
 
